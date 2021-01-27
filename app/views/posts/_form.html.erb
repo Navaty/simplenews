@@ -17,7 +17,7 @@
   <% end %>
 
 
-<div class="form-tab">
+<div class="form-tab first">
 
   <div class="form-group">
     <%= form.label :title, "Заголовок" %>
@@ -37,14 +37,14 @@
 </div>
 
 
-  <div class="form-tab">
+  <div class="form-tab second">
     <div class="form-group">
       <%= form.label :body, "Описание новости" %>
       <%= form.text_area :body, id: :post_body, class: "required form-control" %>
     </div>
   </div>
 
-  <div class="form-tab">
+  <div class="form-tab third">
 
     <div class="form-group">
       <%= form.label :category, "Категория" %>
