@@ -7,21 +7,24 @@
 
   <div class="posttext">
     <div class="row">
-    <div class="col-4">
-     <span class="font-weight-bold">Источник:</span> <%= sanitize link_to @post.source, @post.source_url %>
-    </div>
-    <div class="col-4">
-      <span class="font-weight-bold">Категория:</span> <%= @post.category %>
-    </div>
-    <div class="col-4">
-      <span class="font-weight-bold">Возрастной рейтинг:</span> <%= @post.age_rating %>
-    </div>
+      <div class="col-4">
+       <span class="font-weight-bold">Источник:</span> <%= @post.source %>
+      </div>
+      <div class="col-4">
+        <span class="font-weight-bold">Категория:</span> <%= @post.category %>
+      </div>
+      <div class="col-4">
+        <span class="font-weight-bold">Возрастной рейтинг:</span> <%= @post.age_rating %>
+      </div>
+      <div class="col-4">
+        <span class="font-weight-bold">Ссылка на источник:</span> <%= sanitize link_to @post.source_url, @post.source_url %>
+      </div>
+      <div class="col-4">
+        <span class="font-weight-bold">Автор:</span> <%= @post.user.email %>
+      </div>
     </div>
     <div class="postdesc">
       <%= sanitize @post.body %>
-    </div>
-    <div>
-      <span class="font-weight-bold">Автор:</span> <%= @post.user.email %>
     </div>
 </div>
             <div class="col-md-4 mb-4 mt-3 offset-lg-8">

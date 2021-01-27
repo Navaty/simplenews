@@ -7,5 +7,5 @@ class Post < ApplicationRecord
 
   validates :title, :source, :body, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORY_OPTIONS }
-  validates :age_rating, inclusion: { in: AGE_RATE_OPTIONS }
+  validates :age_rating, inclusion: { in: AGE_RATE_OPTIONS }, allow_blank: true
 end

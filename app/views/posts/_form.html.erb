@@ -53,7 +53,7 @@
 
     <div class="form-group">
       <%= form.label :age_rating, "Возрастная аудитория" %>
-      <%= form.select :age_rating, Post::AGE_RATE_OPTIONS,  class: "form-control" %>
+      <%= form.select :age_rating, Post::AGE_RATE_OPTIONS, :include_blank => "Отсутствует", class: "form-control" %>
     </div>
 
 

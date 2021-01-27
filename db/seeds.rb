@@ -6,4 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!({email:"rusel6991@yandex.ru", password: "qwerty", password_confirmation: "qwerty"})
+u = User.create!({email:"test@test.ru", password: "qwerty", password_confirmation: "qwerty"})
+1..7.times do |i| 
+	u.posts.create!({title: "Simple#{i}", body:"This body of simple #{i}", category: "Авто", age_rating: "0+", source: "Simple source", source_url:"ya.ru"})
+end
