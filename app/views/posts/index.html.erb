@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1 class="text-center pb-3">Свежие новости</h1>
 
@@ -22,7 +22,7 @@
         <td><%= post.created_at.in_time_zone("Moscow").strftime("%d.%m.%Y %H:%M") %></td>
         <% if can? :manage, post %>
         <td><%= link_to 'Редактировать', edit_post_path(post), class:"btn btn-outline-primary btn-sm" %></td>
-        <td><%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %></td>
+        <td><%= link_to 'Удалить', post, method: :delete, remote: true, class:"btn btn-outline-danger btn-sm destroy-btn" %></td>
         <% end %>
       </tr>
     <% end %>
@@ -31,4 +31,3 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
