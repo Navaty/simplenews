@@ -1,4 +1,9 @@
-<%= form_with(model: post, local: true) do |form| %>
+<% content_for :js_include do %>
+<%= javascript_include_tag 'posts' %>
+<% end %>
+
+<%= form_with(model: post, local: true, id:'postForm') do |form| %>
+  
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,42 +16,63 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+
+<div class="form-tab">
+
+  <div class="form-group">
+    <%= form.label :title, "Заголовок" %>
+    <%= form.text_field :title, id: :post_title, class: "required form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body %>
+  <div class="form-group">
+    <%= form.label :source, "Источник новости" %>
+    <%= form.text_field :source, id: :post_source, class: "required form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :source %>
-    <%= form.text_field :source, id: :post_source %>
+  <div class="form-group">
+    <%= form.label :source_url, "URL источника" %>
+    <%= form.text_field :source_url, id: :post_source_url, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :source_url %>
-    <%= form.text_field :source_url, id: :post_source_url %>
+</div>
+
+
+  <div class="form-tab">
+    <div class="form-group">
+      <%= form.label :body, "Описание новости" %>
+      <%= form.text_area :body, id: :post_body, class: "required form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :post_user_id %>
+  <div class="form-tab">
+    <div class="form-group">
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id, id: :post_user_id,  class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :category, "Категория" %>
+      <%= form.select :category, Post::CATEGORY_OPTIONS, class: "required form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :age_rating, "Возрастная аудитория" %>
+      <%= form.select :age_rating, Post::AGE_RATE_OPTIONS,  class: "form-control" %>
+    </div>
+
+
   </div>
 
-  <div class="field">
-    <%= form.label :age_rating %>
-    <%= form.select :age_rating, Post::AGE_RATE_OPTIONS %>
+  <div style="overflow:auto;">
+  <div style="float:right;">
+    <button type="button" class="btn btn-info" id="prevBtn" onclick="nextPrev(-1)">Назад</button>
+    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Следующий шаг</button>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.select :category, Post::CATEGORY_OPTIONS %>
+    <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>

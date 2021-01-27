@@ -6,11 +6,16 @@
 <% end %>
 
   <div class="posttext">
-    <div>
+    <div class="row">
+    <div class="col-4">
      <span class="font-weight-bold">Источник:</span> <%= sanitize link_to @post.source, @post.source_url %>
     </div>
-    <div>
+    <div class="col-4">
       <span class="font-weight-bold">Категория:</span> <%= @post.category %>
+    </div>
+    <div class="col-4">
+      <span class="font-weight-bold">Возрастной рейтинг:</span> <%= @post.age_rating %>
+    </div>
     </div>
     <div class="postdesc">
       <%= sanitize @post.body %>
