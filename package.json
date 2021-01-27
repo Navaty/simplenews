@@ -1,0 +1,7 @@
+{
+  "name": "newstask",
+  "private": true,
+  "dependencies": {
+    "10": "0.0.1"
+  }
+}

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<h1 class="text-center"><%= @post.title %> </h1>
+ <% if user_signed_in? %>
+<%= link_to 'Редактировать', edit_post_path(@post), class: "btn btn-outline-primary btn-sm mb-3" %>
+<% end %>
+
+  <div class="posttext">
+    <div>
+     <span class="font-weight-bold">Источник:</span> <%= sanitize link_to @post.source, @post.source_url %>
+    </div>
+    <div>
+      <span class="font-weight-bold">Категория:</span> <%= @post.category %>
+    </div>
+    <div class="postdesc">
+      <%= sanitize @post.body %>
+    </div>
+</div>
+            <div class="col-md-4 mb-4 mt-3 offset-lg-8">
+                <%= link_to 'Назад к разделу', posts_path, class: "btn btn-info form-control"%>
+            </div>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center pb-3">Свежие новости</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Категория</th>
+      <th scope="col">Автор</th>
+      <th scope="col">Дата добавления</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, post, class:"text-reset font-weight-bold" %></td>
+        <td><%= post.category %></td>
+        <td><%= post.user.email %></td>
+        <td><%= post.created_at.in_time_zone("Moscow").strftime("%d.%m.%Y %H:%M") %></td>
+        <td><%= link_to 'Редактировать', edit_post_path(post), class:"btn btn-outline-primary btn-sm" %></td>
+        <td><%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
