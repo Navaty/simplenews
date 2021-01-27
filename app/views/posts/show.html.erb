@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1 class="text-center"><%= @post.title %> </h1>
- <% if user_signed_in? %>
+  <% if can? :manage, @post %>
 <%= link_to 'Редактировать', edit_post_path(@post), class: "btn btn-outline-primary btn-sm mb-3" %>
+<%= link_to 'Удалить', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm mb-3" %>
 <% end %>
 
   <div class="posttext">
